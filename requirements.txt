@@ -1,0 +1,13 @@
+pytesseract
+opencv-python
+pillow
+chromadb
+sentence-transformers
+google-generativeai
+ollama
+pydantic>=2
+python-dotenv
+fpdf2
+matplotlib
+streamlit
+pytest

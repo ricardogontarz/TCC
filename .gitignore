@@ -1,0 +1,28 @@
+/.env
+chroma_notas/
+__pycache__/
+*.pyc
+.idea/
+venv/
+.venv/
+# Config de campos editada em runtime pela tela de Configurações.
+# Os campos PADRÃO ficam em src/campos.py (CAMPOS_PADRAO); este arquivo é
+# recriado automaticamente na 1ª execução.
+campos.json
+# Registro de versões da configuração de campos (runtime).
+campos_versoes.json
+# Documentos reais aprovados na validação humana (gabaritos por versão de campos).
+dados/aprovadas/
+/docs/Template-Relatório-Técnico-BES-UTFPR (1)/*
+# docs: ignora os pesados (template LaTeX, PDFs), mas versiona os .md
+/docs/*
+!/docs/esqueleto_relatorio.md
+!/docs/prompt_agente_ferramenta_tcc.md
+# Dataset SROIE (ICDAR 2019) — 540MB; baixado/montado por src/experimentos/sroie.py (--preparar).
+dados/sroie/
+# Banco de RESULTADOS (histórico de extrações; gerado em runtime).
+resultados.db
+# Caches de ferramentas
+.pytest_cache/
+.benchmarks/
+.DS_Store

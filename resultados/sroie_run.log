@@ -1,0 +1,92 @@
+[1;31m----------
+
+NOTICE:
+
+You have tried to upgrade to asdf 0.16.0 or newer. Versions 0.16.0 is a
+complete rewrite of asdf in Go. This text is being printed by the older
+Bash implementation. If you are seeing this you have not migrated to
+asdf 0.16.0. Please follow the instructions on the upgrade guide to
+migrate to the new version.
+
+Aside from this notice, this older Bash implementation works as it did
+in asdf version 0.15.0 and older.
+
+Migration guide: https://asdf-vm.com/guide/upgrading-to-v0-16
+asdf website: https://asdf-vm.com
+Source code: https://github.com/asdf-vm/asdf
+[0m
+
+/Users/ricardogontarz/Documents/GitHub/TCC/src/pipeline.py:20: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Modelo: ollama / llama3.1:8b | pipeline v2.0.0
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7279.55it/s]
+Corrupt JPEG data: bad Huffman code
+Coleção SROIE recriada do zero.
+Indexando o trainval (OCR + embeddings — primeira vez demora)...
+  indexados 50/626
+  indexados 100/626
+  indexados 150/626
+  indexados 200/626
+  indexados 250/626
+  indexados 300/626
+  indexados 350/626
+  indexados 400/626
+  indexados 450/626
+  indexados 500/626
+  indexados 550/626
+  indexados 600/626
+Base indexada com 626 documentos do trainval.
+Auditoria anti-leakage: OK (626 itens, todos do trainval).
+Avaliando 347 documentos de teste nas DUAS condições...
+
+  10/347 documentos avaliados.
+  20/347 documentos avaliados.
+  30/347 documentos avaliados.
+  40/347 documentos avaliados.
+  50/347 documentos avaliados.
+  60/347 documentos avaliados.
+  70/347 documentos avaliados.
+  80/347 documentos avaliados.
+  90/347 documentos avaliados.
+  100/347 documentos avaliados.
+  110/347 documentos avaliados.
+  120/347 documentos avaliados.
+  130/347 documentos avaliados.
+  140/347 documentos avaliados.
+  150/347 documentos avaliados.
+  160/347 documentos avaliados.
+  170/347 documentos avaliados.
+  180/347 documentos avaliados.
+  190/347 documentos avaliados.
+  200/347 documentos avaliados.
+  210/347 documentos avaliados.
+  220/347 documentos avaliados.
+  230/347 documentos avaliados.
+  240/347 documentos avaliados.
+  250/347 documentos avaliados.
+  260/347 documentos avaliados.
+  270/347 documentos avaliados.
+  280/347 documentos avaliados.
+  290/347 documentos avaliados.
+  300/347 documentos avaliados.
+  310/347 documentos avaliados.
+  320/347 documentos avaliados.
+  330/347 documentos avaliados.
+  340/347 documentos avaliados.
+CSV salvo em resultados/sroie_ollama-llama3-1-8b.csv
+Markdown salvo em resultados/sroie_ollama-llama3-1-8b.md
+Gráfico salvo em resultados/sroie_ollama-llama3-1-8b.png
+
+=== RESUMO (SROIE) ===
+F1 micro          baseline: 0.565 | RAG: 0.741
+Alucinação        baseline: 0.098 | RAG: 0.087
+Exact match doc   baseline: 0.127 | RAG: 0.323
+JSON válido 1ª    baseline: 1.000 | RAG: 0.919

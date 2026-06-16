@@ -1,0 +1,31 @@
+metrica,SEM_RAG (baseline),COM_RAG
+modelo,ollama / llama3.1:8b,ollama / llama3.1:8b
+versao_pipeline,2.0.0,2.0.0
+limiar_similaridade,0.8,0.8
+limiar_derivacao,0.7,0.7
+precisao_company,0.718,0.872
+recall_company,0.602,0.824
+f1_company,0.655,0.847
+precisao_address,0.732,0.877
+recall_address,0.331,0.801
+f1_address,0.456,0.837
+precisao_date,0.688,0.770
+recall_date,0.548,0.628
+f1_date,0.610,0.692
+precisao_total,0.584,0.684
+recall_total,0.461,0.481
+f1_total,0.515,0.565
+precisao_micro,0.675,0.810
+recall_micro,0.486,0.684
+f1_micro,0.565,0.741
+taxa_alucinacao,0.098,0.087
+taxa_erro_grounded,0.226,0.103
+exact_match_doc,0.127,0.323
+taxa_json_valido_1a,1.000,0.919
+taxa_json_valido_final,1.000,0.977
+tempo_llm_medio_s,4.698,8.542
+tokens_medios_entrada,713.657,1996.775
+tokens_medios_saida,63.948,74.222
+custo_medio_usd,0.000,0.000
+n_documentos,347,347
+n_falhas,0,0

@@ -1,0 +1,13 @@
+# Tema do app de validação humana (OCR + RAG).
+# Fixamos PROPOSITALMENTE só a cor de destaque e a fonte — sem travar
+# backgroundColor/textColor. Assim o seletor de aparência embutido do Streamlit
+# (menu ⋮ → Settings → Appearance: Light / Dark / Use system setting) continua
+# funcionando e o usuário MANTÉM a opção de tema escuro. A cor índigo escolhida
+# tem bom contraste tanto no claro quanto no escuro.
+[theme]
+primaryColor = "#6366f1"
+font = "sans serif"
+
+[server]
+# Mantém o upload de imagens de nota confortável.
+maxUploadSize = 50
