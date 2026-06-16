@@ -1,0 +1,31 @@
+metrica,SEM_RAG (baseline),COM_RAG
+modelo,ollama / qwen3:8b,ollama / qwen3:8b
+versao_pipeline,2.1.0,2.1.0
+limiar_similaridade,0.8,0.8
+limiar_derivacao,0.7,0.7
+precisao_company,0.643,0.859
+recall_company,0.608,0.827
+f1_company,0.625,0.843
+precisao_address,0.789,0.919
+recall_address,0.744,0.885
+f1_address,0.766,0.902
+precisao_date,0.648,0.680
+recall_date,0.594,0.669
+f1_date,0.620,0.674
+precisao_total,0.691,0.705
+recall_total,0.651,0.683
+f1_total,0.671,0.694
+precisao_micro,0.693,0.790
+recall_micro,0.649,0.766
+f1_micro,0.670,0.778
+taxa_alucinacao,0.077,0.098
+taxa_erro_grounded,0.230,0.112
+exact_match_doc,0.288,0.487
+taxa_json_valido_1a,0.997,0.867
+taxa_json_valido_final,1.000,1.000
+tempo_llm_medio_s,6.340,10.964
+tokens_medios_entrada,840.389,2488.579
+tokens_medios_saida,84.836,95.164
+custo_medio_usd,0.000,0.000
+n_documentos,347,347
+n_falhas,0,0

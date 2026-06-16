@@ -128,13 +128,24 @@ def _gerar_json_gemini(prompt: str, modelo: str = MODELO_LLM) -> RespostaLLM:
 
 def _gerar_json_ollama(prompt: str, modelo: str = MODELO_OLLAMA) -> RespostaLLM:
     """Chama um LLM LOCAL via Ollama. format='json' força saída JSON válida —
-    grátis, sem cota nem rate-limit, roda offline na máquina."""
+    grátis, sem cota nem rate-limit, roda offline na máquina.
+
+    think=False desliga o "raciocínio" dos modelos híbridos/reasoning
+    (qwen3, gemma4, deepseek-r1). Sem isso o traço de raciocínio vaza no
+    `content` e o JSON sai inválido (o format='json' sozinho não contém).
+    Para esta tarefa — copiar campos do OCR — não se quer raciocínio: quer-se
+    JSON limpo. Modelos que não suportam thinking (ex.: llama3.1) recusam o
+    parâmetro, daí o fallback que repete a chamada sem ele."""
     cliente = ollama.Client(host=OLLAMA_HOST)
-    resposta = cliente.chat(
+    comum = dict(
         model=modelo,
         messages=[{"role": "user", "content": prompt}],
         format="json",
     )
+    try:
+        resposta = cliente.chat(think=False, **comum)
+    except Exception:
+        resposta = cliente.chat(**comum)
     return RespostaLLM(
         texto=resposta["message"]["content"],
         tokens_entrada=resposta.get("prompt_eval_count"),

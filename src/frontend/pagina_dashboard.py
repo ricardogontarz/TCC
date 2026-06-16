@@ -154,19 +154,28 @@ def _render_extracoes() -> None:
 
     df = _com_custo(pd.DataFrame(linhas))
 
-    # Filtro por experimento, com rótulos amigáveis ('cli' fora das opções).
+    # Filtros: por experimento (rótulos amigáveis, 'cli' fora) e por modelo.
     presentes = [
         e for e in sorted(df["experimento"].dropna().unique())
         if e not in EXPERIMENTOS_OCULTOS
     ]
-    escolhido = st.selectbox(
-        "Experimento",
-        ["todos"] + presentes,
-        index=0,
-        format_func=lambda e: ROTULOS_EXPERIMENTO.get(e, e),
-    )
+    col_exp, col_mod = st.columns(2)
+    with col_exp:
+        escolhido = st.selectbox(
+            "Experimento",
+            ["todos"] + presentes,
+            index=0,
+            format_func=lambda e: ROTULOS_EXPERIMENTO.get(e, e),
+        )
     if escolhido != "todos":
         df = df[df["experimento"] == escolhido]
+
+    # Opções de modelo derivadas do que já passou pelo filtro de experimento.
+    modelos = sorted(df["modelo"].dropna().unique())
+    with col_mod:
+        modelo_sel = st.selectbox("Modelo", ["todos"] + modelos, index=0)
+    if modelo_sel != "todos":
+        df = df[df["modelo"] == modelo_sel]
 
     _render_metricas_topo(df)
     st.divider()

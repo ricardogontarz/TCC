@@ -28,7 +28,7 @@ class SelecoesSidebar:
     """Escolhas do operador na sidebar de extração, devolvidas à página."""
 
     provedor: str  # "ollama" | "gemini"
-    modelo: str    # derivado do provedor (config) — não editável pelo usuário
+    modelo: str    # ollama: escolhido pelo operador (MODELOS_OLLAMA); gemini: do config
 
 
 # ---------------------------------------------------------------------------
@@ -54,8 +54,8 @@ def render_sidebar_extracao(
     """Desenha a configuração da extração e DEVOLVE as seleções do usuário.
 
     Recebe a contagem da base, o nome da coleção ativa e a versão dos campos já
-    resolvidos — para a view não tocar no domínio. O modelo é DETERMINADO pelo
-    provedor (fonte única: config.py) e exibido somente leitura."""
+    resolvidos — para a view não tocar no domínio. Para ollama o operador escolhe
+    o modelo entre os avaliados (config.MODELOS_OLLAMA); para gemini usa o do config."""
     st.sidebar.markdown("### ⚙️ Configuração da extração")
     provedor = st.sidebar.selectbox(
         "Provedor de LLM",
@@ -63,9 +63,19 @@ def render_sidebar_extracao(
         index=0 if config.PROVEDOR_LLM == "ollama" else 1,
         help="ollama = modelo local, grátis e offline. gemini = API do Google.",
     )
-    # O modelo é DETERMINADO pelo provedor (fonte única: config.py), só leitura.
-    modelo = config.MODELO_OLLAMA if provedor == "ollama" else config.MODELO_LLM
-    st.sidebar.text_input("Modelo (definido pelo provedor)", value=modelo, disabled=True)
+    # Para ollama, o operador escolhe entre os modelos avaliados (lista curada em
+    # config.MODELOS_OLLAMA). Para gemini, o modelo é o do config (só leitura).
+    if provedor == "ollama":
+        modelo = st.sidebar.selectbox(
+            "Modelo (Ollama)",
+            options=list(config.MODELOS_OLLAMA),
+            index=0,
+            help="Modelos locais avaliados no experimento SROIE. Trocar o modelo "
+            "muda apenas quem gera o JSON — a base de exemplos (RAG) é a mesma.",
+        )
+    else:
+        modelo = config.MODELO_LLM
+        st.sidebar.text_input("Modelo (definido pelo provedor)", value=modelo, disabled=True)
     st.sidebar.caption(
         "Cada extração roda nas **duas condições** — baseline (sem RAG) e com "
         "RAG — sobre o mesmo OCR, e você escolhe qual resultado validar."

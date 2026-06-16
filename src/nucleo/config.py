@@ -33,6 +33,14 @@ PROVEDOR_LLM: str = "ollama"
 MODELO_OLLAMA: str = "llama3.1:8b"
 OLLAMA_HOST: str = "http://localhost:11434"
 
+# Modelos Ollama OFERECIDOS no seletor do app (lista curada de propósito): são
+# exatamente os avaliados no experimento SROIE, todos ~8-12B e capazes de gerar
+# JSON estruturado limpo. NÃO incluir modelos de raciocínio puro (ex.:
+# deepseek-r1): com o raciocínio ligado o traço <think> vaza e quebra o JSON, e
+# desligado a saída degrada — não servem para extração estruturada constrita.
+# O primeiro da lista é o padrão (MODELO_OLLAMA).
+MODELOS_OLLAMA: tuple = ("llama3.1:8b", "qwen3:8b", "gemma4:12b")
+
 # Modelo usado quando PROVEDOR_LLM == "gemini". A chave (GOOGLE_API_KEY) vem do
 # .env, nunca hardcoded. Obs.: a proposta citava "gemini-2.0-flash", mas esse
 # modelo não está no free tier desta conta (cota diária = 0); usamos o sucessor
